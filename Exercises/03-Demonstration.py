@@ -11,8 +11,6 @@ import matplotlib.pyplot as plt
 
 from scipy import ndimage
 
-get_ipython().run_line_magic("matplotlib", "inline")
-
 
 # # Playing with noise generators
 

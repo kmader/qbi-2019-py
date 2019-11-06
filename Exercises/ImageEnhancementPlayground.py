@@ -16,7 +16,7 @@ import skimage.data
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 # To prevent automatic figure display when execution of the cell ends
 get_ipython().run_line_magic("config", "InlineBackend.close_figures = False")
 

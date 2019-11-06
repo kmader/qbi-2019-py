@@ -248,7 +248,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 xx, yy = np.meshgrid(np.linspace(-1.5, 1.5, 15), np.linspace(-1.5, 1.5, 15))
 
 N_DISK_ROW = 2
@@ -1140,7 +1140,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 (img_data, dig_label), _ = mnist.load_data()
 bw_img = img_data[0, ::2, ::2]
 shift_img = np.roll(np.roll(bw_img, -2, axis=0), 2, axis=1)
@@ -1254,7 +1254,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 full_img = imread("ext-figures/bonegfiltslice.png")
 full_shift_img = median(
     np.roll(np.roll(full_img, -15, axis=0), 15, axis=1), np.ones((1, 3))
@@ -1535,7 +1535,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 full_img = imread("ext-figures/bonegfiltslice.png")
 full_shift_img = median(
     np.roll(np.roll(full_img, -15, axis=0), 15, axis=1), np.ones((1, 3))
@@ -2099,7 +2099,6 @@ def register_img(
 # In[47]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 reg_img = register_img(bw_img, shift_img, brute_force=False, use_mse=True)
 print(reg_img.max(), bw_img.max())
 fig, (ax1, ax2, ax2d, ax3, ax4) = plt.subplots(1, 5, figsize=(20, 5), dpi=100)

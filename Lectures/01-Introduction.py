@@ -172,7 +172,6 @@
 # In[43]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -253,7 +252,6 @@ print("%04.1f hours to view a terabyte" % (time_per_tb))
 # In[3]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 # stolen from https://gist.github.com/humberto-ortiz/de4b3a621602b78bf90d
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -465,7 +463,6 @@ plt.colorbar(plot_image)
 # In[14]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -491,7 +488,6 @@ ax1.set_ylabel("Red Component")
 # In[15]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -515,7 +511,6 @@ ax1.set_ylabel("Red Component")
 # In[16]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
@@ -558,7 +553,6 @@ print(vol_image)
 # In[18]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 from skimage.util import montage as montage2d
 
@@ -592,7 +586,6 @@ base_df.head(5)
 # In[20]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 
 fig, (ax1, ax2) = plt.subplots(1, 2)
@@ -625,7 +618,6 @@ ax1.set_title("Intensity")
 # In[22]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 import pandas as pd
 from skimage.io import imread
@@ -704,7 +696,6 @@ Atomic Force Microscopy	Sharp Point	Surface Contact	Contact, Repulsion	Deflectio
 # In[26]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 import pandas as pd
 from skimage.io import imread
@@ -743,7 +734,6 @@ ax2.set_title("Reconstructed")
 # In[27]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 import pandas as pd
 from skimage.io import imread
@@ -907,7 +897,6 @@ ax1.set_title("Measurement")
 # In[28]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -931,7 +920,6 @@ ax2.matshow(img_b, vmin=0, vmax=100, cmap="bone")
 # In[29]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 import numpy as np
 

@@ -56,7 +56,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 blob_data, blob_labels = make_blobs(n_samples=100, random_state=2018)
 test_pts = pd.DataFrame(blob_data, columns=["x", "y"])
@@ -99,7 +98,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 blob_data, blob_labels = make_blobs(n_samples=100, cluster_std=2.0, random_state=2018)
 test_pts = pd.DataFrame(blob_data, columns=["x", "y"])
@@ -260,7 +258,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 blob_data, blob_labels = make_blobs(n_samples=100, random_state=2018)
 test_pts = pd.DataFrame(blob_data, columns=["x", "y"])
@@ -306,7 +303,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 blob_data, blob_labels = make_blobs(n_samples=1000, cluster_std=3, random_state=2018)
 test_pts = pd.DataFrame(blob_data, columns=["x", "y"])
@@ -393,8 +389,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 
-get_ipython().run_line_magic("matplotlib", "inline")
-
 
 blob_data, blob_labels = make_blobs(n_samples=100, random_state=2018)
 test_pts = pd.DataFrame(blob_data, columns=["x", "y"])
@@ -462,7 +456,7 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 from pipe_utils import show_pipe
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 digit_ds = load_digits(return_X_y=False)
 img_data = digit_ds.images[:50]
 digit_id = digit_ds.target[:50]
@@ -572,7 +566,7 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 from pipe_utils import show_pipe, flatten_step
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 digit_ds = load_digits(return_X_y=False)
 
 img_data = digit_ds.images[:50]
@@ -703,7 +697,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 cell_img = (imread("../common/data/em_image.png")[::2, ::2]) / 255.0
 cell_seg = imread("../common/data/em_image_seg.png", as_gray=True)[::2, ::2] > 0
 print(cell_img.shape, cell_seg.shape)
@@ -1162,7 +1156,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 cell_img = (imread("../common/data/em_image.png")[::2, ::2]) / 255.0
 cell_seg = imread("../common/data/em_image_seg.png", as_gray=True)[::2, ::2] > 0
 train_img, valid_img = cell_img[:256, 50:250], cell_img[:, 256:]

@@ -80,8 +80,6 @@ from scipy import ndimage
 import skimage.transform
 import numpy as np
 
-get_ipython().run_line_magic("matplotlib", "inline")
-
 
 def generate_dot_image(size=100, rad_a=1, rad_b=None):
     xx, yy = np.meshgrid(np.linspace(-1, 1, size), np.linspace(-1, 1, size))
@@ -340,8 +338,6 @@ from scipy import ndimage
 import skimage.transform
 import numpy as np
 
-get_ipython().run_line_magic("matplotlib", "inline")
-
 
 def generate_dot_image(size=100, rad_a=1, rad_b=None):
     xx, yy = np.meshgrid(np.linspace(-1, 1, size), np.linspace(-1, 1, size))
@@ -471,7 +467,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 bw_img = imread("ext-figures/bonegfiltslice.png")
 thresh_img = binary_closing(binary_opening(bw_img < 90, disk(3)), disk(5))
 fg_dmap = distance_transform_edt(thresh_img)
@@ -552,7 +548,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 bw_img = imread("ext-figures/bonegfiltslice.png")[::2, ::2]
 thresh_img = binary_closing(binary_opening(bw_img < 90, disk(1)), disk(2))
 fg_dmap = distance_transform_edt(thresh_img)
@@ -633,8 +629,6 @@ from skimage.util import montage as montage2d
 import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
-
-get_ipython().run_line_magic("matplotlib", "inline")
 
 
 def montage_pad(x):
@@ -975,7 +969,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 x, y = np.meshgrid(range(8), range(8))
 
@@ -1139,7 +1132,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 cortex_img = np.clip(
     imread("ext-figures/example_poster.tif")[::2, ::2] / 270, 0, 255
 ).astype(np.uint8)

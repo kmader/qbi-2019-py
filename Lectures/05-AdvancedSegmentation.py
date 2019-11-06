@@ -62,7 +62,6 @@
 # In[1]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.io import imread
 import matplotlib.pyplot as plt
 import numpy as np
@@ -154,7 +153,6 @@ for i, ((ax1, ax2), c_img) in enumerate(zip(m_axs, m_cell_imgs)):
 # In[3]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.io import imread
 import matplotlib.pyplot as plt
 import numpy as np
@@ -210,7 +208,6 @@ ax3.imshow(out_img, cmap="gist_earth")
 # In[4]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.io import imread
 import matplotlib.pyplot as plt
 import numpy as np
@@ -254,7 +251,6 @@ ax2.hist(bone_img.ravel(), 50)
 # In[5]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.io import imread
 import matplotlib.pyplot as plt
 import numpy as np
@@ -310,7 +306,6 @@ fig, ax = try_all_threshold(bone_img, figsize=(10, 8), verbose=True)
 # In[6]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.io import imread
 import matplotlib.pyplot as plt
 import numpy as np
@@ -361,7 +356,6 @@ ax2.set_title("Threshold $<$ %d" % (thresh_vals[2]))
 # In[8]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.morphology import dilation, opening, disk
 from collections import OrderedDict
 
@@ -412,7 +406,6 @@ for i, (c_ax, (c_title, c_img)) in enumerate(
 # In[9]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.io import imread
 import matplotlib.pyplot as plt
 import numpy as np
@@ -544,7 +537,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 test_pts = pd.DataFrame(
     make_blobs(n_samples=200, random_state=2018)[0], columns=["x", "y"]
@@ -610,7 +602,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 cortex_img = imread("ext-figures/cortex.png")[::3, ::3] / 1000.0
 np.random.seed(2018)
 fig, (ax1) = plt.subplots(1, 1, figsize=(8, 8), dpi=72)
@@ -698,7 +690,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 shale_img = imread("../common/figures/shale-slice.tiff")
 np.random.seed(2018)
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(12, 4), dpi=100)

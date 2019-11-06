@@ -45,7 +45,6 @@ print("Loading Fossil Data sized {}".format(fossil_data.shape))
 # In[4]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 slice_idx = int(fossil_data.shape[0] / 2)
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
 
@@ -61,7 +60,6 @@ ax2.set_title("Slice Histogram")
 # In[5]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from scipy.ndimage.filters import median_filter
 
 # filter the data
@@ -87,7 +85,6 @@ ax2.set_title("Filtered Slice")
 # In[6]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 skip_border = 50
 skip_middle = 4
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(14, 5))
@@ -122,7 +119,6 @@ ax3.axis("off")
 # In[7]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
 thresh_fossil_data = filter_fossil_data > 65
 thresh_slice = thresh_fossil_data[slice_idx]
@@ -138,7 +134,6 @@ ax2.set_title("Slice with Threshold")
 # In[8]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.morphology import binary_closing, ball
 
 closed_fossil_data = binary_closing(thresh_fossil_data, ball(5))

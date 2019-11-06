@@ -45,7 +45,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 tform = AffineTransform(scale=(1.3, 1.1), rotation=0, shear=0.1, translation=(0, 0))
 image = warp(data.checkerboard(), tform.inverse, output_shape=(200, 200))

@@ -839,7 +839,6 @@ dot_graph(image_5.dask)
 # In[17]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import dask.array as da
 from dask.dot import dot_graph
 import numpy as np

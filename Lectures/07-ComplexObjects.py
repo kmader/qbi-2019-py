@@ -113,7 +113,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 bw_img = imread("ext-figures/bonegfiltslice.png")[::2, ::2]
 thresh_img = binary_closing(binary_opening(bw_img < 90, disk(1)), disk(2))
 fg_dmap = distance_transform_edt(thresh_img)
@@ -790,7 +790,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 rgb_img = imread("../common/figures/dsb_sample/slide.png")[:, :, :3]
 gt_labs = imread("../common/figures/dsb_sample/labels.png")
@@ -1031,7 +1030,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 bw_img = imread("../common/data/NMC_90wt_2000bar_115.tif")[:, :, 0]
 
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(20, 10), dpi=120)

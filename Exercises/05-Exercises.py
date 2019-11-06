@@ -20,7 +20,7 @@ from skimage.segmentation import mark_boundaries  # mark labels
 from skimage.io import imread  # read in images
 import matplotlib.pyplot as plt  # plotting
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 # make the notebook interactive
 
 
@@ -40,7 +40,6 @@ print("RGB Size", rgb_img.shape, "Seg Size", seg_img.shape, "Face Size", face_im
 # In[3]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(20, 5))
 ax1.imshow(rgb_img)  # show the color image
 ax1.set_title("Color Image")
@@ -68,7 +67,6 @@ roc_auc = auc(fpr, tpr)
 # In[5]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 fig, ax = plt.subplots(1, 1)
 ax.plot(fpr, tpr, label="ROC curve (area = %0.2f)" % roc_auc)
 ax.plot([0, 1], [0, 1], "k--")
@@ -89,7 +87,7 @@ ax.legend(loc="lower right")
 
 from scipy.ndimage.filters import uniform_filter
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 filter_size = 45
 filtered_image = uniform_filter(np.mean(rgb_img, 2), filter_size)
 score_value = 1 - filtered_image.astype(np.float32).flatten() / 255.0

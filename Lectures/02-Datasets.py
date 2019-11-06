@@ -151,7 +151,7 @@ import matplotlib.pyplot as plt
 from keras.datasets import mnist
 from skimage.util import montage as montage2d
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 (img, label), _ = mnist.load_data()
 fig, m_axs = plt.subplots(5, 5, figsize=(9, 9))
 for c_ax, c_img, c_label in zip(m_axs.flatten(), img, label):
@@ -272,7 +272,7 @@ import matplotlib.pyplot as plt
 from keras.datasets import mnist
 from skimage.util import montage as montage2d
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 (img, label), _ = mnist.load_data()
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 8))
@@ -379,7 +379,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from keras.datasets import mnist
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 (img, label), _ = mnist.load_data()
 img = np.expand_dims(img, -1)
 fig, m_axs = plt.subplots(4, 10, figsize=(16, 10))
@@ -435,7 +435,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from keras.datasets import mnist
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 fig, m_axs = plt.subplots(4, 10, figsize=(16, 12))
 # setup augmentation
 img_aug.fit(img)
@@ -484,7 +484,7 @@ import matplotlib.pyplot as plt
 from keras.datasets import mnist
 from skimage.util import montage as montage2d
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 (img, label), _ = mnist.load_data()
 fig, m_axs = plt.subplots(5, 5, figsize=(12, 12))
 m_axs[0, 0].hist(label[:24], np.arange(11))
@@ -530,7 +530,7 @@ import matplotlib.pyplot as plt
 from keras.datasets import mnist
 from skimage.util import montage as montage2d
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 (img, label), _ = mnist.load_data()
 fig, m_axs = plt.subplots(5, 5, figsize=(12, 12))
 m_axs[0, 0].hist(label[:24], np.arange(11))

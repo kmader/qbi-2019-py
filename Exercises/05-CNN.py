@@ -7,7 +7,6 @@
 # In[1]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import os
 from IPython.display import display
 import numpy as np  # linear algebra / matrices
@@ -45,7 +44,6 @@ roc_auc = auc(fpr, tpr)
 # In[4]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(20, 5))
 ax1.imshow(rgb_img)  # show the color image
 ax1.set_title("Color Image")

@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 from skimage.color import rgb2gray
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 cell_img = (255 - imread("../common/data/em_image.png")[::2, ::2]) / 255.0
 cell_seg = rgb2gray(imread("../common/data/em_image_seg.png"))[::2, ::2] > 0
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8, 4), dpi=150)
@@ -285,7 +285,7 @@ import matplotlib.pyplot as plt
 from skimage.color import rgb2gray
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 shale_img = imread("ext-figures/ShaleSample.jpg") / 255.0
 fig, ax1 = plt.subplots(1, 1, dpi=200)
 ax1.imshow(shale_img, cmap="bone")
@@ -393,7 +393,6 @@ for c_ax, c_max, c_title in zip(m_axs[1:], [0.3, 0.5, 1.0], ["Void", "Clay", "Ro
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 nx = 20
 ny = 20
@@ -489,7 +488,7 @@ from skimage.morphology import binary_dilation, binary_erosion, disk
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(6, 3.5), dpi=200)
 simple_img = np.eye(5)
 ax1.imshow(simple_img)
@@ -535,7 +534,6 @@ ax2.set_title("Erosion")
 # In[18]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.morphology import (
     binary_dilation,
     binary_erosion,
@@ -588,7 +586,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from skimage.io import imread
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 step_list = [10, 20, 50, 100, 500]
 fig, m_axs = plt.subplots(1, len(step_list), figsize=(15, 5), dpi=200)
 for c_ax, steps in zip(m_axs, step_list):

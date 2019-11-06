@@ -19,8 +19,6 @@ from mpl_toolkits.mplot3d import Axes3D
 import skimage.filters as flt
 import skimage.restoration as res
 
-get_ipython().run_line_magic("matplotlib", "inline")
-
 
 # # Load test image
 # The boat image is a often used test image with many line features.

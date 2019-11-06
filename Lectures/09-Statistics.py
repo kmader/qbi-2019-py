@@ -255,7 +255,6 @@ sns.set_style("whitegrid", {"axes.grid": False})
 # In[2]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from sklearn.datasets import load_iris
 import pandas as pd
 import seaborn as sns

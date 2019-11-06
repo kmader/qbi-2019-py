@@ -59,7 +59,6 @@
 # In[1]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.io import imread
 from skimage.color import rgb2gray
 import matplotlib.pyplot as plt
@@ -117,7 +116,6 @@ plt.matshow(rgb2gray(dkimg), cmap="bone")
 # In[2]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.io import imread
 from skimage.color import rgb2gray
 import matplotlib.pyplot as plt
@@ -187,7 +185,6 @@ cb_obj.set_label("Absorption Coefficient")
 # In[3]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.io import imread
 from skimage.color import rgb2gray
 import matplotlib.pyplot as plt
@@ -256,7 +253,6 @@ ax1.matshow(cell_img * beam_img, cmap="hot")
 # In[6]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -311,7 +307,6 @@ ax4.axis("off")
 # In[7]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 import numpy as np
 from skimage.morphology import ball
@@ -475,7 +470,6 @@ ax.set_zlabel("Breast Thickness")
 # In[15]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -572,7 +566,6 @@ for c_thresh, ax1 in zip(np.linspace(0.1, 0.9, 9), m_axs.flatten()):
 # In[19]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.io import imread
 from skimage.color import rgb2gray
 import matplotlib.pyplot as plt
@@ -607,7 +600,6 @@ for c_thresh, ax1 in zip(np.linspace(100, 200, 9), m_axs.flatten()):
 # In[21]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np

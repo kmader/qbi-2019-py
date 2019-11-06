@@ -63,7 +63,6 @@ image_dict = get_patient_images(patient=41)
 # In[8]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 us_image, us_mask = image_dict["41_40.tif"]
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(14, 4))
 ax1.imshow(us_image)
@@ -97,7 +96,6 @@ ax4.set_title("Ultrasound Intensity Distribution")
 # In[10]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(14, 4))
 ax1.imshow(us_image)
 ax1.set_title("Ultrasound Image")
@@ -141,7 +139,6 @@ ax.legend(loc="lower right")
 # In[ ]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 from skimage.filters import gaussian
 
 gus_image = gaussian(us_image / 255, sigma=25) * 255

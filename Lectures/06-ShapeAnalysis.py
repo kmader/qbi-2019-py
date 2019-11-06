@@ -139,7 +139,6 @@ from skimage.io import imread
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 car_img = imread("ext-figures/aachen_img.png")
 seg_img = imread("ext-figures/aachen_label.png")[::4, ::4] == 26
@@ -194,7 +193,7 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 seg_img = np.eye(9, dtype=int)
 seg_img[4, 4] = 0
 seg_img += seg_img[::-1]
@@ -324,7 +323,7 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 seg_img = (imread("ext-figures/aachen_label.png")[::4, ::4] == 26)[110:130:2, 370:420:3]
 seg_img[9, 1] = 1
 _, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 7), dpi=150)
@@ -585,7 +584,7 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 seg_img = imread("ext-figures/aachen_label.png") == 26
 seg_img = seg_img[::4, ::4]
 seg_img = seg_img[110:130:2, 370:420:3]
@@ -632,8 +631,6 @@ from IPython.display import Markdown, display
 import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
-
-get_ipython().run_line_magic("matplotlib", "inline")
 
 
 xx, yy = np.meshgrid(np.linspace(0, 10, 50), np.linspace(0, 10, 50))
@@ -741,7 +738,7 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 seg_img = imread("ext-figures/aachen_label.png") == 26
 seg_img = seg_img[::4, ::4]
 seg_img = seg_img[110:130:2, 378:420:3] > 0
@@ -798,7 +795,6 @@ from skimage.io import imread
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 car_img = np.clip(imread("ext-figures/aachen_img.png")[75:150] * 2.0, 0, 255).astype(
     np.uint8
@@ -923,7 +919,6 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 xx, yy = np.meshgrid(np.linspace(-5, 5, 100), np.linspace(-5, 5, 100))
 
@@ -1007,7 +1002,6 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
 
 cm_dm = np.linspace(1000, 4000, 300)
 
@@ -1259,7 +1253,7 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 seg_img = imread("ext-figures/aachen_label.png") == 26
 seg_img = seg_img[::4, ::4]
 seg_img = seg_img[110:130:2, 378:420:3] > 0

@@ -17,7 +17,7 @@ from os.path import join
 import glob
 import cv2
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 import matplotlib.pyplot as plt
 
 

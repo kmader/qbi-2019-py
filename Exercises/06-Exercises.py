@@ -29,8 +29,6 @@ from skimage.measure import label  # for labeling regions
 import matplotlib.pyplot as plt  # for showing plots
 from skimage.io import imread  # for reading images
 
-get_ipython().run_line_magic("matplotlib", "inline")
-
 
 # # Connected Component Labeling
 # scikit-image has basic support for [connected component labeling](http://scikit-image.org/docs/dev/api/skimage.measure.html#skimage.measure.label) and we can do some small demos with the label function and small test images, before moving onto bigger datasets.

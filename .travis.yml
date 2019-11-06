@@ -18,7 +18,7 @@ install:
 
 script:
   - shopt -s globstar
-  - for cpy in **/*ipynb; do
+  - for cpy in **/*.py; do
     if [[ $cpy = *"Kaggle"* ]]; then
         echo "skipping kaggle kernel $cpy";
     else

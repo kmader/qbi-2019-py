@@ -16,7 +16,6 @@ import os
 from skimage.measure import block_reduce
 
 plt_settings = {"interpolation": "none"}
-get_ipython().run_line_magic("matplotlib", "inline")
 
 
 # # Distance Maps
@@ -42,7 +41,6 @@ def generate_dot_image(size=100, cutoff=0.15):
 # In[3]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 img_bw = generate_dot_image(28, 0.50)
 plt.imshow(img_bw, cmap="gray", **plt_settings)
 
@@ -50,7 +48,6 @@ plt.imshow(img_bw, cmap="gray", **plt_settings)
 # In[4]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 img_dist = ndimage.distance_transform_edt(img_bw)
 plt.imshow(img_dist, **plt_settings)
 
@@ -63,7 +60,6 @@ plt.imshow(img_dist, **plt_settings)
 # In[5]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 # calculate new distance transforms
 img_dist = ndimage.distance_transform_edt(img_bw)
 img_dist_cityblock = ndimage.distance_transform_cdt(img_bw, metric="taxicab")
@@ -90,7 +86,6 @@ cbar_ax.set_title("Distance\n(px)")
 # In[6]:
 
 
-get_ipython().run_line_magic("matplotlib", "inline")
 # use a bigger base image
 img_bw = generate_dot_image(100, 0.15)
 img_dist = ndimage.distance_transform_edt(img_bw)
@@ -120,7 +115,7 @@ cbar_ax.set_title("Distance\n(px)")
 
 cc_img = ndimage.label(img_bw)[0]
 
-get_ipython().run_line_magic("matplotlib", "inline")
+
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(30, 10))
 ax1.imshow(img_bw, cmap="gray", **plt_settings)
 ax1.set_title("Mask Image")
@@ -155,7 +150,7 @@ def simple_watershed(img_dist, img_bw):
 
 
 ws_img = simple_watershed(img_dist, img_bw)
-get_ipython().run_line_magic("matplotlib", "inline")
+
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(30, 10))
 ax1.imshow(img_bw, cmap="gray", **plt_settings)
 ax1.set_title("Mask Image")
