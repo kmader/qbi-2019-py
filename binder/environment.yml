@@ -55,3 +55,4 @@ dependencies:
     - autopep8
     - webcolors
     - itkwidgets
+    - black
