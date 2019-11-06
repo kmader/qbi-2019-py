@@ -7,16 +7,16 @@ python -c "import numpy; print('numpy %s' % numpy.__version__)"
 python -c "import scipy; print('scipy %s' % scipy.__version__)"
 
 # Generating lectures
-for nb in Lectures/*ipynb; do
-    jupyter nbconvert --ExecutePreprocessor.timeout=3600 --execute "$nb" --to markdown |& tee nb_to_md.txt
+for cpy in Lectures/*py; do
+    python $cpy |& tee nb_to_md.txt
     traceback=$(grep "Traceback (most recent call last):" nb_to_md.txt)
     if [[ $traceback ]]; then
         exit 1
     fi
 done
 # Generating exercises
-for nb in Exercises/*ipynb; do
-    jupyter nbconvert --ExecutePreprocessor.timeout=3600 --execute "$nb" --to markdown |& tee nb_to_md.txt
+for cpy in Exercises/*py; do
+    python $cpy  |& tee nb_to_md.txt
     traceback=$(grep "Traceback (most recent call last):" nb_to_md.txt)
     if [[ $traceback ]]; then
         exit 1
