@@ -10,11 +10,13 @@ import scipy
 from scipy import ndimage
 import matplotlib.pyplot as plt
 from skimage.morphology import medial_axis, watershed
-create_dist_map = lambda img, mask=None: medial_axis(img,mask, return_distance = True)[1]
+
+create_dist_map = lambda img, mask=None: medial_axis(img, mask, return_distance=True)[1]
 import os
 from skimage.measure import block_reduce
-plt_settings = {'interpolation':'none'}
-get_ipython().run_line_magic('matplotlib', 'inline')
+
+plt_settings = {"interpolation": "none"}
+get_ipython().run_line_magic("matplotlib", "inline")
 
 
 # # Distance Maps
@@ -23,34 +25,37 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 # In[2]:
 
 
-def generate_dot_image(size = 100, cutoff = 0.15):
+def generate_dot_image(size=100, cutoff=0.15):
     """
     Create a simple  synthetic image with a repeating pattern
     Keyword arguments:
     size -- the size of the image on one size, final size is size x size (default 100)
     imag -- the cutoff between 0 and 1, higher means less connected objects (default 0.15)
     """
-    xx,yy = np.meshgrid(range(size),range(size))
-    return np.sin(6*np.pi*xx/(100)-1)+1.25*np.cos(5*np.pi*yy/(100)-2)>cutoff
+    xx, yy = np.meshgrid(range(size), range(size))
+    return (
+        np.sin(6 * np.pi * xx / (100) - 1) + 1.25 * np.cos(5 * np.pi * yy / (100) - 2)
+        > cutoff
+    )
 
 
 # In[3]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
-img_bw = generate_dot_image(28,0.50)
-plt.imshow(img_bw,cmap='gray', **plt_settings)
+get_ipython().run_line_magic("matplotlib", "inline")
+img_bw = generate_dot_image(28, 0.50)
+plt.imshow(img_bw, cmap="gray", **plt_settings)
 
 
 # In[4]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+get_ipython().run_line_magic("matplotlib", "inline")
 img_dist = ndimage.distance_transform_edt(img_bw)
 plt.imshow(img_dist, **plt_settings)
 
 
-# ## Comparing 
+# ## Comparing
 # There are a number of different methods for ```distance_transform``` inside the ```ndimage``` package of ```scipy``` compare the results of the different approaches for this and other images.
 # - What are the main differences?
 # - Quantitatively (histogram) show what situations each one might be best suited for?
@@ -58,25 +63,25 @@ plt.imshow(img_dist, **plt_settings)
 # In[5]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+get_ipython().run_line_magic("matplotlib", "inline")
 # calculate new distance transforms
 img_dist = ndimage.distance_transform_edt(img_bw)
-img_dist_cityblock = ndimage.distance_transform_cdt(img_bw,metric = 'taxicab')
-img_dist_chess = ndimage.distance_transform_cdt(img_bw,metric = 'chessboard')
+img_dist_cityblock = ndimage.distance_transform_cdt(img_bw, metric="taxicab")
+img_dist_chess = ndimage.distance_transform_cdt(img_bw, metric="chessboard")
 
-fig, (ax1,ax2,ax3,ax4) = plt.subplots(1,4, figsize = (30,10))
-ax1.imshow(img_bw,cmap = 'gray', **plt_settings)
-ax1.set_title('Mask Image')
-dmap_im = ax2.imshow(img_dist,vmax = img_dist.max(), **plt_settings)
-ax2.set_title('Euclidean')
-ax3.imshow(img_dist_cityblock,vmax = img_dist.max(), **plt_settings)
-ax3.set_title('Cityblock')
-ax4.imshow(img_dist_chess,vmax = img_dist.max(), **plt_settings)
-ax4.set_title('Chess')
+fig, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize=(30, 10))
+ax1.imshow(img_bw, cmap="gray", **plt_settings)
+ax1.set_title("Mask Image")
+dmap_im = ax2.imshow(img_dist, vmax=img_dist.max(), **plt_settings)
+ax2.set_title("Euclidean")
+ax3.imshow(img_dist_cityblock, vmax=img_dist.max(), **plt_settings)
+ax3.set_title("Cityblock")
+ax4.imshow(img_dist_chess, vmax=img_dist.max(), **plt_settings)
+ax4.set_title("Chess")
 fig.subplots_adjust(right=0.8)
 cbar_ax = fig.add_axes([0.85, 0.15, 0.05, 0.7])
-cbar = fig.colorbar(dmap_im,cax=cbar_ax)
-cbar_ax.set_title('Distance\n(px)')
+cbar = fig.colorbar(dmap_im, cax=cbar_ax)
+cbar_ax.set_title("Distance\n(px)")
 
 
 # ## More Complicated Objects
@@ -85,26 +90,26 @@ cbar_ax.set_title('Distance\n(px)')
 # In[6]:
 
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+get_ipython().run_line_magic("matplotlib", "inline")
 # use a bigger base image
-img_bw = generate_dot_image(100,0.15)
+img_bw = generate_dot_image(100, 0.15)
 img_dist = ndimage.distance_transform_edt(img_bw)
-img_dist_cityblock = ndimage.distance_transform_cdt(img_bw,metric = 'taxicab')
-img_dist_chess = ndimage.distance_transform_cdt(img_bw,metric = 'chessboard')
+img_dist_cityblock = ndimage.distance_transform_cdt(img_bw, metric="taxicab")
+img_dist_chess = ndimage.distance_transform_cdt(img_bw, metric="chessboard")
 
-fig, (ax1,ax2,ax3,ax4) = plt.subplots(1,4, figsize = (30,10))
-ax1.imshow(img_bw,cmap = 'gray', **plt_settings)
-ax1.set_title('Mask Image')
-dmap_im = ax2.imshow(img_dist,vmax = img_dist.max(), **plt_settings)
-ax2.set_title('Euclidean')
-ax3.imshow(img_dist_cityblock,vmax = img_dist.max(), **plt_settings)
-ax3.set_title('Cityblock')
-ax4.imshow(img_dist_chess,vmax = img_dist.max(), **plt_settings)
-ax4.set_title('Chess')
+fig, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize=(30, 10))
+ax1.imshow(img_bw, cmap="gray", **plt_settings)
+ax1.set_title("Mask Image")
+dmap_im = ax2.imshow(img_dist, vmax=img_dist.max(), **plt_settings)
+ax2.set_title("Euclidean")
+ax3.imshow(img_dist_cityblock, vmax=img_dist.max(), **plt_settings)
+ax3.set_title("Cityblock")
+ax4.imshow(img_dist_chess, vmax=img_dist.max(), **plt_settings)
+ax4.set_title("Chess")
 fig.subplots_adjust(right=0.8)
 cbar_ax = fig.add_axes([0.85, 0.15, 0.05, 0.7])
-cbar = fig.colorbar(dmap_im,cax=cbar_ax)
-cbar_ax.set_title('Distance\n(px)')
+cbar = fig.colorbar(dmap_im, cax=cbar_ax)
+cbar_ax.set_title("Distance\n(px)")
 
 
 # # Watershed
@@ -115,51 +120,49 @@ cbar_ax.set_title('Distance\n(px)')
 
 cc_img = ndimage.label(img_bw)[0]
 
-get_ipython().run_line_magic('matplotlib', 'inline')
-fig, (ax1,ax2) = plt.subplots(1,2, figsize = (30,10))
-ax1.imshow(img_bw,cmap = 'gray', **plt_settings)
-ax1.set_title('Mask Image')
+get_ipython().run_line_magic("matplotlib", "inline")
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(30, 10))
+ax1.imshow(img_bw, cmap="gray", **plt_settings)
+ax1.set_title("Mask Image")
 dmap_im = ax2.imshow(cc_img, **plt_settings)
-ax2.set_title('Connected Component Analysis');
+ax2.set_title("Connected Component Analysis")
 
 
 # In[8]:
 
 
 from skimage.feature import peak_local_max
+
+
 def simple_watershed(img_dist, img_bw):
     """
     Calculate the watershed transform on an image and its distance map 
     by finding the troughs and expanding from these points
     """
-    local_maxi = peak_local_max(img_dist, labels=img_bw,
-                                footprint=np.ones((3, 3)),
-                                indices=False)
+    local_maxi = peak_local_max(
+        img_dist, labels=img_bw, footprint=np.ones((3, 3)), indices=False
+    )
     markers = ndimage.label(local_maxi)[0]
-    return watershed(-img_dist,markers,mask = img_bw)
+    return watershed(-img_dist, markers, mask=img_bw)
 
 
 # ## Applying Watershed
-# We can apply watershed to the following image. 
+# We can apply watershed to the following image.
 # - Why do the bottom row of objects not show up?
 # - How can the results be improved
 
 # In[9]:
 
 
-ws_img = simple_watershed(img_dist,img_bw)
-get_ipython().run_line_magic('matplotlib', 'inline')
-fig, (ax1,ax2,ax3) = plt.subplots(1,3, figsize = (30,10))
-ax1.imshow(img_bw,cmap = 'gray', **plt_settings)
-ax1.set_title('Mask Image')
+ws_img = simple_watershed(img_dist, img_bw)
+get_ipython().run_line_magic("matplotlib", "inline")
+fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(30, 10))
+ax1.imshow(img_bw, cmap="gray", **plt_settings)
+ax1.set_title("Mask Image")
 ax2.imshow(cc_img, **plt_settings)
-ax2.set_title('Connected Component Analysis')
+ax2.set_title("Connected Component Analysis")
 ax3.imshow(ws_img, **plt_settings)
-ax3.set_title('Watershed Analysis')
+ax3.set_title("Watershed Analysis")
 
 
 # In[ ]:
-
-
-
-
