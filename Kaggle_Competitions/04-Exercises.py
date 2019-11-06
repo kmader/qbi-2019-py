@@ -7,17 +7,17 @@
 import os
 
 if not os.path.exists("../input"):
-    get_ipython().system(
+    os.system(
         "kaggle competitions download -c ultrasound-nerve-segmentation -wp nerve"
     )
-    get_ipython().system("mkdir ../input")
-    get_ipython().system("mv nerve/ultrasound-nerve-segmentation/* ../input")
-    get_ipython().system(
+    os.system("mkdir ../input")
+    os.system("mv nerve/ultrasound-nerve-segmentation/* ../input")
+    os.system(
         "cd ../input; ls *.zip|awk -F'.zip' '{print \"unzip \"$0\" -d \"$1}'|sh > null"
     )
-    get_ipython().system("mkdir ../input/csvs")
-    get_ipython().system("mv ../input/*.csv ../input/csvs")
-    get_ipython().system("mv ../input/csvs/*/*.csv ../input/")
+    os.system("mkdir ../input/csvs")
+    os.system("mv ../input/*.csv ../input/csvs")
+    os.system("mv ../input/csvs/*/*.csv ../input/")
 
 
 # Here is the starting point for processing ultrasound nerve segmentation data from Kaggle

@@ -10,12 +10,12 @@
 import os
 
 if not os.path.exists("input"):
-    get_ipython().system(
+    os.system(
         "kaggle datasets download -d kmader/electron-microscopy-3d-segmentation -wp emdata"
     )
-    get_ipython().system("mkdir input")
-    get_ipython().system("mv emdata/* input")
-    get_ipython().system("cd input/ && unzip *.zip")
+    os.system("mkdir input")
+    os.system("mv emdata/* input")
+    os.system("cd input/ && unzip *.zip")
 
 
 # In[2]:

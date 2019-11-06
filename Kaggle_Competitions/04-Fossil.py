@@ -7,11 +7,11 @@
 import os
 
 if not os.path.exists("../input"):
-    get_ipython().system(
+    os.system(
         "kaggle datasets download -d kmader/qbi-image-segmentation -wp fossil"
     )
-    get_ipython().system("mkdir ../input")
-    get_ipython().system("mv fossil/kmader/qbi-image-segmentation/* ../input")
+    os.system("mkdir ../input")
+    os.system("mv fossil/kmader/qbi-image-segmentation/* ../input")
 
 
 # Here we look at Fossil Data from the documentary shown [here](https://vimeo.com/208535479) password is qbi2017
