@@ -18,14 +18,18 @@ install:
 
 script:
   - shopt -s globstar
-  - for cpy in **/*.py; do
-    if [[ $cpy = *"Kaggle"* ]]; then
-        echo "skipping kaggle kernel $cpy";
-    else
-      python $cpy |& tee nb_to_md.txt;
-      traceback=$(grep "Traceback (most recent call last):" nb_to_md.txt);
-      if [[ $traceback ]]; then
+  - for cdir in `find . -type d`; do
+      cd $cdir;
+      for cpy in *.py; do
+      if [[ $cpy = *"Kaggle"* ]]; then
+          echo "skipping kaggle kernel $cpy";
+      else
+        python $cpy |& tee nb_to_md.txt;
+        traceback=$(grep "Traceback (most recent call last):" nb_to_md.txt);
+        if [[ $traceback ]]; then
           exit 1;
+        fi;
       fi;
-    fi;
+      done;
+      cd ..;
     done
