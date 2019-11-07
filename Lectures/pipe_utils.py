@@ -1,6 +1,6 @@
 from sklearn.preprocessing import FunctionTransformer
 import numpy as np
-from skimage.filters import laplace, gaussian, median
+from skimage.filters import gaussian
 from skimage.util import montage as montage2d
 import matplotlib.pyplot as plt
 
