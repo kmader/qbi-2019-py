@@ -2,9 +2,9 @@
 # coding: utf-8
 
 # In this Kernel, I'd like to show you a very basic segmentation technique whihc only applies pure computer vision techniques. Nothing fancy.
-# 
+#
 # At first, I'll show the step-by-step processing and after that I will create the submission for the competition.
-# 
+#
 # With this kernel, I could reach *0.229 LB* which is not very nice but I am sure that with a few tweaks we could get better score. And consider that **we don't even use the train data**! which is pretty awesome in my opinion.
 
 # In[ ]:
@@ -16,15 +16,16 @@ import os
 from os.path import join
 import glob
 import cv2
-get_ipython().run_line_magic('matplotlib', 'inline')
+
+
 import matplotlib.pyplot as plt
 
 
 # In[ ]:
 
 
-TRAIN_PATH = '../input/stage1_train/'
-TEST_PATH = '../input/stage1_test/'
+TRAIN_PATH = "../input/stage1_train/"
+TEST_PATH = "../input/stage1_test/"
 
 
 # In[ ]:
@@ -37,7 +38,9 @@ test_ids = os.listdir(TEST_PATH)
 # In[ ]:
 
 
-test_image_paths = [glob.glob(join(TEST_PATH, test_id, "images", "*"))[0] for test_id in test_ids]
+test_image_paths = [
+    glob.glob(join(TEST_PATH, test_id, "images", "*"))[0] for test_id in test_ids
+]
 
 
 # # Step-by-step processing
@@ -66,15 +69,15 @@ ret, thresh = cv2.threshold(tmp_image, 100, 255, cv2.THRESH_OTSU)
 # In[ ]:
 
 
-fig, axs = plt.subplots(1, 2, figsize=(10,10))
+fig, axs = plt.subplots(1, 2, figsize=(10, 10))
 axs[0].imshow(tmp_image)
 axs[1].imshow(thresh)
 
 
 # There are images where the thresholding does not help because the ones will be the background and the zeros the objects. This happend when the background is more brighter than the objects.
-# 
+#
 # But how we detect this?
-# 
+#
 # We just have to find the contours of the objects. Than calculate the area of the contour and if it is above some threshold value than we will just invert the image.
 
 # In[ ]:
@@ -102,11 +105,13 @@ print("The area of the largest object is: {0}".format(max_cnt_area))
 
 
 if max_cnt_area > 50000:
-    ret, thresh = cv2.threshold(tmp_image, 100, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
+    ret, thresh = cv2.threshold(
+        tmp_image, 100, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV
+    )
 
 
 # And here comes the *morphology*.
-# 
+#
 # We will use:
 # - Dilation (read more: https://homepages.inf.ed.ac.uk/rbf/HIPR2/dilate.htm)
 # - Erosion (read more: https://homepages.inf.ed.ac.uk/rbf/HIPR2/erode.htm)
@@ -114,14 +119,14 @@ if max_cnt_area > 50000:
 # In[ ]:
 
 
-mask = cv2.dilate(thresh, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5)))
-mask = cv2.erode(mask, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5)))
+mask = cv2.dilate(thresh, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5)))
+mask = cv2.erode(mask, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5)))
 
 
 # In[ ]:
 
 
-fig, axs = plt.subplots(1, 4, figsize=(30,30))
+fig, axs = plt.subplots(1, 4, figsize=(30, 30))
 axs[0].imshow(tmp_image)
 axs[1].imshow(thresh)
 axs[2].imshow(mask)
@@ -138,19 +143,22 @@ axs[3].imshow(cv2.bitwise_and(tmp_image, tmp_image, mask=mask))
 def threshold(image_gray):
     image_gray = cv2.GaussianBlur(image_gray, (7, 7), 1)
     ret, thresh = cv2.threshold(image_gray, 0, 255, cv2.THRESH_OTSU)
-    
+
     _, cnts, _ = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     cnts = sorted(cnts, key=cv2.contourArea, reverse=True)
     max_cnt_area = cv2.contourArea(cnts[0])
-    
+
     if max_cnt_area > 50000:
-        ret, thresh = cv2.threshold(image_gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV)
-    
+        ret, thresh = cv2.threshold(
+            image_gray, 0, 255, cv2.THRESH_OTSU | cv2.THRESH_BINARY_INV
+        )
+
     return thresh
 
+
 def apply_morphology(thresh):
-    mask = cv2.dilate(thresh, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5)))
-    mask = cv2.erode(mask, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5,5)))
+    mask = cv2.dilate(thresh, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5)))
+    mask = cv2.erode(mask, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5)))
     return mask
 
 
@@ -162,10 +170,10 @@ def apply_morphology(thresh):
 segmented = []
 for test_image_path in test_image_paths:
     tmp_image = cv2.imread(test_image_path, cv2.IMREAD_GRAYSCALE)
-    
+
     thresh = threshold(tmp_image)
     mask = apply_morphology(thresh)
-    
+
     segmented.append(mask)
 
 
@@ -176,15 +184,18 @@ for test_image_path in test_image_paths:
 
 from skimage.morphology import label
 
+
 def rle_encoding(x):
     dots = np.where(x.T.flatten() == 1)[0]
     run_lengths = []
     prev = -2
     for b in dots:
-        if (b>prev+1): run_lengths.extend((b + 1, 0))
+        if b > prev + 1:
+            run_lengths.extend((b + 1, 0))
         run_lengths[-1] += 1
         prev = b
     return run_lengths
+
 
 def prob_to_rles(x, cutoff=0.5):
     lab_img = label(x > cutoff)
@@ -207,8 +218,10 @@ for n, id_ in enumerate(test_ids):
 
 
 submission_df = pd.DataFrame()
-submission_df['ImageId'] = new_test_ids
-submission_df['EncodedPixels'] = pd.Series(rles).apply(lambda x: ' '.join(str(y) for y in x))
+submission_df["ImageId"] = new_test_ids
+submission_df["EncodedPixels"] = pd.Series(rles).apply(
+    lambda x: " ".join(str(y) for y in x)
+)
 
 
 # In[ ]:
@@ -222,7 +235,11 @@ submission_df.sample(3)
 
 if not len(np.unique(submission_df["ImageId"])) == len(test_ids):
     print("Submission is not complete")
-    print("Missing test ids: {0}".format(set(test_ids).difference(set(np.unique(submission_df["ImageId"])))))
+    print(
+        "Missing test ids: {0}".format(
+            set(test_ids).difference(set(np.unique(submission_df["ImageId"])))
+        )
+    )
 else:
     print("Submission is complete")
 
@@ -230,11 +247,7 @@ else:
 # In[ ]:
 
 
-submission_df.to_csv('submission_pure_cv.csv', index=False)
+submission_df.to_csv("submission_pure_cv.csv", index=False)
 
 
 # In[ ]:
-
-
-
-
